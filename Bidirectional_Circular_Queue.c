@@ -1,5 +1,8 @@
 /* 
+	BaekJoon Online Judge Site
 	https://www.acmicpc.net/problem/1021 
+	My Implementations were uploaded to https://www.acmicpc.net/source/24328986
+	- Youngrok Song
 */
 
 #include <stdio.h>
