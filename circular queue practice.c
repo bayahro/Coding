@@ -77,11 +77,7 @@ void insert(circ_queue_t *q, int data)
         q->tail->next = node;
         q->tail = node;
         q->load++;
-        //if(q->load==q->size) //full
-        {
-            //q->tail->next = q->head;
-            q->head->prev = q->tail;
-        }
+        q->head->prev = q->tail;
     }
     //Full (load>=size) -> replace first input
     else
@@ -101,17 +97,7 @@ node_t *pop(circ_queue_t *q)
     node_t *ret = q->head;
     //Empty
     if(q->head==NULL)    {;}
-    //Not Full
-    else if(q->load<q->size)
-    {
-        node_t *new_tail = q->tail->prev;
-        ret = q->tail;
-        new_tail->next = q->head;
-        q->tail = new_tail;
-        q->head->prev = q->tail;
-        q->load--;
-    }
-    //Full
+    //Not Empty
     else
     {
         q->head->prev->next = q->head->next;
@@ -134,7 +120,7 @@ int main()
     insert(queue, 3);
     insert(queue, 4);
     pop(queue);
-#if 0
+#if 1
     insert(queue, 5);
     insert(queue, 6);
     insert(queue, 7);
